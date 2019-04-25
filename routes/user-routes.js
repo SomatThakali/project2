@@ -1,4 +1,5 @@
 const db = require("../models");
+const express = require("express");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const { forwardAuthenticated } = require("../config/auth");
@@ -8,6 +9,9 @@ module.exports = function(app) {
     res.render("register")
   );
 
+  app.get("/dashboards", forwardAuthenticated, (req, res) =>
+    res.render("dashboards")
+  );
   app.get("/login", forwardAuthenticated, (req, res) => res.render("login"));
 
   /** Register Post */
@@ -68,11 +72,11 @@ module.exports = function(app) {
     }
   });
 
-  app.post("/login", async (req, res, next) => {
+  app.post(
+    "/login",
     passport.authenticate("local", {
       successRedirect: "/dashboards",
-      failureRedirect: "/login",
-      failureFlash: true
-    })(req, res, next);
-  });
+      failureRedirect: "/login"
+    })
+  );
 };
