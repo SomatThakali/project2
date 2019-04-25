@@ -1,30 +1,78 @@
 const db = require("../models");
-module.exports = function(app) {
-  /** Register Get */
-  app.get("/register", async (req, res) => {
-    res.render("register");
-  });
+const bcrypt = require("bcryptjs");
+const passport = require("passport");
+const { forwardAuthenticated } = require("../config/auth");
 
-  /** Login Get */
-  app.get("/login", async (req, res) => {
-    res.render("login");
-  });
+module.exports = function(app) {
+  app.get("/register", forwardAuthenticated, (req, res) =>
+    res.render("register")
+  );
+
+  app.get("/login", forwardAuthenticated, (req, res) => res.render("login"));
 
   /** Register Post */
   app.post("/register", async (req, res) => {
-    db.User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: req.body.password,
-      password2: req.body.password2
-    })
-      .then(user => {
-        res.json(user);
-        // console.log(user);
-      })
-      .catch(err => {
-        res.json(err);
+    const { firstName, lastName, email, password, password2 } = req.body;
+    let errors = [];
+
+    if (!firstName || !lastName || !email || !password || !password2) {
+      errors.push({ msg: "Please enter all fields" });
+    }
+
+    if (password != password2) {
+      errors.push({ msg: "Passwords do not match" });
+    }
+
+    if (password.length < 6) {
+      errors.push({ msg: "Password must be at least 6 characters" });
+    }
+
+    if (errors.length > 0) {
+      res.render("register", {
+        errors,
+        firstName,
+        lastName,
+        email,
+        password,
+        password2
       });
+    } else {
+      db.User.findAll({}).then(user => {
+        if (user.email) {
+          errors.push({ msg: "Email already exists" });
+          res.render("register", {
+            errors,
+            firstName,
+            lastName,
+            email,
+            password,
+            password2
+          });
+        } else {
+          bcrypt.hash(password, 10, function(err, hash) {
+            db.User.create({
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              email: req.body.email,
+              password: hash
+            })
+              .then(user => {
+                res.redirect("/login");
+              })
+              .catch(err => {
+                res.json(err);
+              });
+          });
+        }
+      });
+    }
+  });
+
+  app.post("/login", async (req, res, next) => {
+    passport.authenticate("local", {
+      successRedirect: "/dashboards",
+      failureRedirect: "/login",
+      failureFlash: true
+    })(req, res, next);
   });
 };

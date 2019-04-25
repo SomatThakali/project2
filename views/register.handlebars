@@ -4,7 +4,11 @@
             <h1 class="text-center mb-3">
                 <i class="fas fa-user-plus"></i> Register
             </h1>
-            {{!-- <% include ./partials/messages %> --}}
+            {{#if errors}}
+            {{#each errors}}
+            <div class="alert alert-danger"> {{msg}}</div>
+            {{/each}}
+            {{/if}}
             <form action="/register" method="POST">
                 <div class="form-group">
                     <label for="firstName" class="font-weight-bold mb-0">First name</label>
