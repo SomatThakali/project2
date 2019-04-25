@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-const PORT = process.env.PORT || 3900;
+const PORT = process.env.PORT || 3277;
 
 let db = require("./models");
 
@@ -16,7 +16,9 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// require('./routes/api-routes.js')(app);
+/** routes */
+require("./routes/user-routes.js")(app);
+require("./routes/home-routes.js")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
