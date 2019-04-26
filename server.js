@@ -5,7 +5,7 @@ const passport = require("passport");
 const session = require("express-session");
 const app = express();
 
-const PORT = process.env.PORT || 7774;
+const PORT = process.env.PORT || 7884;
 
 let db = require("./models");
 
