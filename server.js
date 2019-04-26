@@ -28,6 +28,14 @@ app.use(
     secret: "cool"
   })
 );
+
+app.use((req, res, next) => {
+  if (req.isAuthenticated) {
+    res.locals.isAuthenticated = req.isAuthenticated();
+  }
+  next();
+});
+
 /** routes */
 require("./routes/user-routes.js")(app);
 require("./routes/home-routes.js")(app);
