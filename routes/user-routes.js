@@ -6,13 +6,15 @@ const { forwardAuthenticated } = require("../config/auth");
 
 module.exports = function(app) {
   app.get("/register", forwardAuthenticated, (req, res) =>
-    res.render("register")
+    res.render("register", { title: "register" })
   );
 
   app.get("/dashboards", forwardAuthenticated, (req, res) =>
-    res.render("dashboards")
+    res.render("dashboards", { title: "Profile" })
   );
-  app.get("/login", forwardAuthenticated, (req, res) => res.render("login"));
+  app.get("/login", forwardAuthenticated, (req, res) =>
+    res.render("login", { title: "login" })
+  );
 
   /** Register Post */
   app.post("/register", async (req, res) => {
@@ -41,8 +43,14 @@ module.exports = function(app) {
         password2
       });
     } else {
-      db.User.findAll({}).then(user => {
-        if (user.email) {
+      db.User.findAll({
+        where: {
+          email
+        }
+      }).then(user => {
+        if (user.length) {
+          console.log("user: ", user, email);
+
           errors.push({ msg: "Email already exists" });
           res.render("register", {
             errors,
@@ -61,7 +69,7 @@ module.exports = function(app) {
               password: hash
             })
               .then(user => {
-                res.redirect("/login");
+                res.render("dashboards", { firstName, lastName });
               })
               .catch(err => {
                 res.json(err);
@@ -72,11 +80,28 @@ module.exports = function(app) {
     }
   });
 
-  app.post(
-    "/login",
-    passport.authenticate("local", {
-      successRedirect: "/dashboards",
-      failureRedirect: "/login"
-    })
-  );
+  app.post("/login", function(req, res, next) {
+    // generate the authenticate method and pass the req/res
+    let errors = [];
+    passport.authenticate("local", function(err, user, info) {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.redirect("/login");
+      }
+      req.login(user, function(err) {
+        if (err) {
+          return next(err);
+        }
+        res.render("dashboards", user[0].dataValues);
+      });
+    })(req, res, next);
+  });
+
+  app.get("/logout", (req, res) => {
+    req.logout();
+    req.session.destroy();
+    res.redirect("/home");
+  });
 };
