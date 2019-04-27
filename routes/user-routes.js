@@ -15,6 +15,10 @@ module.exports = function(app) {
   app.get("/login", forwardAuthenticated, (req, res) =>
     res.render("login", { title: "login" })
   );
+  app.get("/about", (req, res) => res.render("about", { title: "about" }));
+  app.get("/contact", (req, res) =>
+    res.render("contact", { title: "contact" })
+  );
 
   /** Register Post */
   app.post("/register", async (req, res) => {
