@@ -1,0 +1,65 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+<div class="container">
+<div class="row" style="text-align: center">
+  <div class="col-md-12">
+    <h2>Items Available:</h2>
+    <h4> Search for item(3) available in your neighborhood.</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>#Days to borrow</th>
+  </tr>
+  <tr>
+    <td>{{name}}</td>
+    <td>{{category}}</td>
+    <td>{{description}}</td>
+    <td>{{daysBorrow}}</td>
+  </tr>
+</table>
+
+    <ol>
+  {{!-- {{#each name}}
+  {{/each}} --}}
+</ol>
+  </div>
+  <div class="row">
+  <div class="col-md-12">
+<div class="search" style="text-align:center">
+<h4>Search for an item</h4>
+<form class="create-form">
+
+  <div class="form-group">
+    <input type="text" id="ca" name="name"><br>
+    <button type="submit" class="btn btn-secondary">SUBMIT</button>
+  </div>
+</form>
+</div>
+  </div>
+</div>
+</div>

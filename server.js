@@ -39,6 +39,7 @@ app.use((req, res, next) => {
 /** routes */
 require("./routes/user-routes.js")(app);
 require("./routes/home-routes.js")(app);
+require("./routes/dashboard-routes.js")(app);
 
 db.sequelize.sync().then(function() {
 
