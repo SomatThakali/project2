@@ -23,14 +23,13 @@ module.exports = {
       isBorrowed: {
         type: Sequelize.BOOLEAN
       },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)")
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        )
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
