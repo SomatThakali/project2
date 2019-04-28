@@ -1,0 +1,13 @@
+/* Applied to: home.handlebars */
+
+#logo-text1 {
+    color: red;
+}
+
+#logo-text2 {
+    color: blue;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* need to check css loading order. font-size and font-weight currently do not apply */

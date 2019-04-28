@@ -1,3 +1,8 @@
+{{!-- BOOTSTRAP CLEANED UP --}}
+
+{{!-- Custom CSS Stylesheets --}}
+<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/about.css">
+
 {{!-- Navbar --}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -6,14 +11,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/Home">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/Home">Home</a>
             </li>
+            {{#if isAuthenticated}}
             <li class="nav-item">
                 <a class="nav-link" href="/home">Log Out</a>
             </li>
+            {{else}}
             <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/login">Log In</a>
+            </li>
+            {{/if}}
+            <li class="nav-item active">
+                <a class="nav-link" href="/about">About<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact</a>
@@ -24,14 +35,18 @@
 
 {{!-- Content --}}
 <div class="container">
-    <div class="row">
+    {{!-- <div class="row">
         <div class="col-md-12">
-            <h1 class="font-weight-bold">ABOUT US</h1>
+            <h1>ABOUT US</h1>
         </div>
-    </div>
+    </div> --}}
     <div class="row">
         <div class="col-md-12">
             <h2>OUR MISSION</h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-md-center">
+        <div class="col-md-9">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Voluptatibus distinctio blanditiis ipsam labore temporibus placeat rerum, 
@@ -41,15 +56,7 @@
                 nihil eos expedita, et sunt ab hic! Incidunt et quidem reprehenderit officia soluta excepturi, 
                 sunt eligendi cupiditate ea distinctio ab? Exercitationem iure quae ad quod voluptas dolorem 
                 eveniet sequi, corrupti dolore facilis adipisci nemo rem amet eligendi tempore nihil ratione ea a 
-                numquam recusandae esse neque mollitia. Natus esse molestiae est perspiciatis iusto cum quas 
-                cupiditate tempore. Dolorum ut consequatur cupiditate laborum temporibus maiores iusto, neque 
-                corporis qui pariatur ab quam accusantium. Culpa quas assumenda, tempore eius, cupiditate animi 
-                rerum et distinctio quasi, quae vero repudiandae qui. Quaerat maxime ab consequatur eaque? Illum 
-                sed cumque minus nesciunt distinctio voluptas quo saepe itaque dignissimos officia corrupti, nobis 
-                fugiat. Quae et, accusantium quisquam mollitia nemo perspiciatis ipsum, maiores amet delectus est 
-                doloribus harum corporis obcaecati. Aspernatur quia cupiditate voluptate excepturi, recusandae officia 
-                harum, et laboriosam velit illum ratione fuga expedita minima illo rerum obcaecati ipsum dicta maxime 
-                tenetur facilis. Vel delectus, rem nemo error doloribus voluptatem blanditiis ad ipsum.
+                numquam recusandae esse neque mollitia.
             </p>
         </div>
     </div>
@@ -61,47 +68,54 @@
             <h2>THE TEAM</h2>
         </div>
     </div>
-    <div class="row d-flex justify-content-between">
+    
+    <div class="row d-flex justify-content-center">
         <div class="card col-md-2" style="width: 18rem;">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+            <img class="card-img-top" src="/assets/images/eleonore-chevillion.png" alt="eleonore-chevillion">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Eleonore Chevillion</h5>
             </div>
         </div>
         <div class="card col-md-2" style="width: 18rem;">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+            <img class="card-img-top" src="/assets/images/emma-bixler.jpg" alt="emma-bixler">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Emma Bixler</h5>
             </div>
         </div>
         <div class="card col-md-2" style="width: 18rem;">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+            <img class="card-img-top" src="/assets/images/somat-thakali.png" alt="somat-thakali">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Somat Thakali</h5>
             </div>
         </div>
         <div class="card col-md-2" style="width: 18rem;">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+            <img class="card-img-top" src="/assets/images/natasha-moore.jpg" alt="natasha-moore">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Natasha Moore</h5>
             </div>
         </div>
         <div class="card col-md-2" style="width: 18rem;">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+            <img class="card-img-top" src="/assets/images/rachael-tseng.jpg" alt="rachael-tseng">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Rachael Tseng</h5>
             </div>
         </div>
     </div>
+
+    <br />
     
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Voluptatibus distinctio blanditiis ipsam labore temporibus placeat rerum, 
-        excepturi, porro, dolores architecto ipsa? Dolor enim inventore distinctio 
-        consectetur commodi illum voluptatibus consequuntur labore harum totam, earum 
-        aperiam cupiditate velit officia nesciunt obcaecati omnis praesentium pariatur 
-        nihil eos expedita, et sunt ab hic! Incidunt et quidem reprehenderit officia soluta excepturi, 
-        sunt eligendi cupiditate ea distinctio ab? 
-    </p>
+    <div class="row d-flex justify-content-md-center">
+        <div class="col-md-9">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Voluptatibus distinctio blanditiis ipsam labore temporibus placeat rerum, 
+                excepturi, porro, dolores architecto ipsa? Dolor enim inventore distinctio 
+                consectetur commodi illum voluptatibus consequuntur labore harum totam, earum 
+                aperiam cupiditate velit officia nesciunt obcaecati omnis praesentium pariatur 
+                nihil eos expedita, et sunt ab hic! Incidunt et quidem reprehenderit officia soluta excepturi, 
+                sunt eligendi cupiditate ea distinctio ab? 
+            </p>
+        </div>
+    </div>
     
 </div>
