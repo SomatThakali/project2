@@ -1,2 +1,6 @@
 /* Applied to: login.handlebars */
 /* Applied to: register.handlebars */
+
+body {
+    text-align: center;
+}

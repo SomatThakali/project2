@@ -1,5 +1,9 @@
 /* Applied to: home.handlebars */
 
+body {
+    text-align: center;
+}
+
 #logo-text1 {
     color: red;
 }
