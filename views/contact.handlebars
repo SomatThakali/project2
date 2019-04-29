@@ -12,15 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/Home">Home</a>
             </li>
-            {{#if isAuthenticated}}
-            <li class="nav-item">
-                <a class="nav-link" href="/home">Log Out</a>
-            </li>
-            {{else}}
             <li class="nav-item">
                 <a class="nav-link" href="/login">Log In</a>
             </li>
-            {{/if}}
             <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
             </li>
@@ -32,51 +26,44 @@
 </nav>
 
 {{!-- Content --}}
-<div class="row">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <br />
-                <h1 class="font-weight-bold">CONTACT US</h1>
-                <br />
-            </div>
-            <div class="col-lg-8"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1 class="font-weight-bold">CONTACT US</h1>
         </div>
-        <form class="form" id="contactForm" action="/contactSubmission" method="post">
-            <div class="form-group">
-                <label for="messageCat" class="font-weight-bold">Message category</label>
-                <select class="form-control text-center" id="messageCat">
-                    <option value="" disabled selected value> -- select an option -- </option>
-
-                    <option value="Comments">Comments</option>
-                    <option value="Review">Review</option>
-                    <option value="Troubles">Troubles</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nameInput" class="font-weight-bold">Name</label>
-                <input type="name" class="form-control" id="nameInput" placeholder="First Name + Last Name" />
-            </div>
-            <div class="form-group">
-                <label for="emailInput" class="font-weight-bold">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" />
-            </div>
-
-            <div class="form-group">
-                <label for="messageArea" class="font-weight-bold">Your Message</label>
-                <textarea class="form-control" id="messageInput" rows="5"></textarea>
-            </div>
-            <button id="submit" class="btn btn-secondary font-weight-bold">
-                Submit
-            </button>
-        </form>
-
+        <div class="col-lg-8"></div>
     </div>
+    <form class="form" id="contactForm" action="/contactSubmission" method="post">
+        <div class="form-group">
+            <label for="messageCat" class="font-weight-bold">Message category</label>
+            <select class="form-control text-center" id="messageCat">
+                <option value="" disabled selected value> -- select an option -- </option>
+
+                <option value="Comments">Comments</option>
+                <option value="Review">Review</option>
+                <option value="Troubles">Troubles</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nameInput" class="font-weight-bold">Name</label>
+            <input type="name" class="form-control" id="nameInput" placeholder="First Name + Last Name" />
+        </div>
+        <div class="form-group">
+            <label for="emailInput" class="font-weight-bold">Email address</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" />
+        </div>
+
+        <div class="form-group">
+            <label for="messageArea" class="font-weight-bold">Your Message</label>
+            <textarea class="form-control" id="messageInput" rows="5"></textarea>
+        </div>
+        <button id="submit" class="btn btn-secondary font-weight-bold">
+            Submit
+        </button>
+    </form>
 </div>
+
 <script>
-
-
-
     $("#contactForm").submit(function (e) {
         var messageCat = $("#messageCat").val();
         var name = $("#nameInput").val();
