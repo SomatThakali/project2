@@ -1,2 +1,6 @@
 /* Applied to: about.handlebars */
 /* Applied to: contact.handlebars */
+
+body {
+    text-align: center;
+}

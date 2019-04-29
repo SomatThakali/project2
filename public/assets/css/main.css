@@ -1,20 +1,17 @@
 /* Applied to: (all .handlebars pages */
 
 body {
-    text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 footer {
     text-align: center;
+    background-color: lightgrey;
+    padding-top: 10px;
 }
 
 .navbar {
     margin-bottom: 30px;
-}
-
-.container {
-    
 }
 
 h1 {

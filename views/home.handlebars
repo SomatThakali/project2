@@ -12,17 +12,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/Home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/Home">Home<span class="sr-only">(current)</span></a>
             </li>
-            {{#if isAuthenticated}}
-            <li class="nav-item">
-                <a class="nav-link" href="/home">Log Out</a>
-            </li>
-            {{else}}
             <li class="nav-item">
                 <a class="nav-link" href="/login">Log In</a>
             </li>
-            {{/if}}
             <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
             </li>
@@ -46,7 +40,7 @@
         </div>
     </div>
 
-    <br />
+    <hr />
 
     <div class="row d-flex justify-content-md-center">
         <div class="col-md-6">
