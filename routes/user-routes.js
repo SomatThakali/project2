@@ -147,6 +147,7 @@ module.exports = function(app) {
     db.Items.create(req.body).then(function(dbItems) {
       res.json(dbItems);
     });
+  });
 
   app.delete("/api/lending/:id", function(req, res) {
     db.Items.destroy({
@@ -166,8 +167,7 @@ module.exports = function(app) {
           id: req.body.id
         }
       }).then(function(dbItems) {
-      res.json(dbItems);
+        res.json(dbItems);
       });
     });
-  });
 };
