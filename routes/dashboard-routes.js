@@ -37,6 +37,7 @@ module.exports = function(app) {
   });
 
   app.put("/borrowing/:id", (req, res) => {
+    res.redirect("/borrowing");
     let updatedValue = { isBorrowed: true };
 
     db.Item.update(
@@ -46,8 +47,6 @@ module.exports = function(app) {
           id: req.params.id
         }
       },
-
-      res.redirect("/borrowing"),
       result => {
         console.log(result);
       }
@@ -61,15 +60,10 @@ module.exports = function(app) {
           id: req.params.id
         }
       },
-
       res.redirect("/borrowing"),
       result => {
         console.log(result);
       }
     );
-  });
-
-  app.get("/dashboards", function(req, res) {
-    res.render("dashboards");
   });
 };
