@@ -10,9 +10,33 @@ table {
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 10px;
+}
+
+th {
+  border: 1px solid #dddddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.1em;
 }
 
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+#deleteBtn {
+  cursor: pointer;
+  background-color: #92010F;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 13px;
+}
+
+#updateBtn {
+  cursor:pointer;
+  background-color:#ffcf02;
+  color:white;
+  border-radius: 5px;
+  padding: 8px 13px;
+}
+
