@@ -143,12 +143,12 @@ module.exports = function(app) {
     });
   });
 
-app.post("/api/lending", function(req,res) {
-  db.Items.create(req.body).then(function(dbItems) {
-    res.json(dbItems);
-  });
+  app.post("/api/lending", function(req,res) {
+    db.Items.create(req.body).then(function(dbItems) {
+      res.json(dbItems);
+    });
 
-app.delete("/api/lending/:id", function(req, res) {
+  app.delete("/api/lending/:id", function(req, res) {
     db.Items.destroy({
       where: {
         id: req.params.id
@@ -156,18 +156,18 @@ app.delete("/api/lending/:id", function(req, res) {
     }).then(function(dbItems) {
       res.json(dbItems);
     });
-});
-
-app.put("/api/lending", function(req, res) {
-  db.Items.update(
-    req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    }).then(function(dbItems) {
-    res.json(dbItems);
   });
-});
-});
+
+  app.put("/api/lending", function(req, res) {
+    db.Items.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbItems) {
+      res.json(dbItems);
+      });
+    });
+  });
 };
