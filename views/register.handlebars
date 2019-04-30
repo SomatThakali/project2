@@ -1,3 +1,5 @@
+{{!-- BOOTSTRAP CLEANED UP --}}
+
 {{!-- Custom CSS Stylesheets --}}
 <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/user.css">
 
@@ -26,39 +28,51 @@
 </nav>
 
 {{!-- Content --}}
-<div class="row mt-5">
+<div class="row">
     <div class="col-md-6 m-auto">
         <div class="card card-body">
-            <h1 class="text-center mb-3">
+            <h1 class="text-center mt-3 mb-3">
                 <i class="fas fa-user-plus"></i> Register
             </h1>
+            <hr />
             {{#if errors}}
             {{#each errors}}
             <div class="alert alert-danger"> {{msg}}</div>
             {{/each}}
             {{/if}}
+
             <form action="/register" method="POST">
                 <div class="form-group">
                     <label for="firstName" class="font-weight-bold mb-0">First name</label>
-                    <input type="name" id="firstName" name="firstName" class="form-control mb-3"
-                        placeholder="Enter First Name" </div> <label for="lastName" class="font-weight-bold mb-0">Last
-                    name</label>
-                    <input type="name" id="lastName" name="lastName" class="form-control mb-3"
-                        placeholder="Enter Last Name" </div> <div class="form-group">
+                    <input type="name" id="firstName" name="firstName" class="form-control text-center mb-3" 
+                        placeholder="Enter First Name"> 
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="font-weight-bold mb-0">Last name</label>
+                    <input type="name" id="lastName" name="lastName" class="form-control text-center mb-3" 
+                        placeholder="Enter Last Name">
+                </div>
+                <div class="form-group">
                     <label for="email" class="font-weight-bold mb-0">Email</label>
-                    <input type="email" id="email" name="email" class="form-control mb-3" placeholder="Enter Email"
-                        </div> <div class="form-group">
+                    <input type="email" id="email" name="email" class="form-control text-center mb-3" 
+                        placeholder="Enter Email">
+                </div>
+                <div class="form-group">
                     <label for="password" class="font-weight-bold mb-0">Password</label>
-                    <input type="password" id="password" name="password" class="form-control mb-3" </div> <div
-                        class="form-group ">
+                    <input type="password" id="password" name="password" class="form-control text-center mb-3"
+                        placeholder="Enter Password">
+                </div>
+                <div class="form-group">
                     <label for="password2" class="font-weight-bold mb-0">Re-enter Password</label>
-                    <input type="password" id="password2" name="password2" class="form-control mb-3"
-                        placeholder="Confirm Password" </div> <button type="submit"
-                        class="btn btn-primary btn-block mt-5">
-                    Register
-                    </button>
+                    <input type="password" id="password2" name="password2" class="form-control text-center mb-3"
+                        placeholder="Confirm Password"> 
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-4">Register</button>
             </form>
-            <p class="lead mt-4">Have An Account? <a href="/login">Login</a></p>
+
+            <p class="mt-4">
+                Have an account? <a href="/login">Login here</a>
+            </p>
         </div>
     </div>
 </div>
