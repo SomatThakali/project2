@@ -103,6 +103,16 @@ module.exports = function(app) {
     })(req, res, next);
   });
 
+  app.post("/login", async (req, res) => {
+    const {email, password} = req.body;
+    let errors = [];
+
+    if (!email || !password) {
+      error.push({msg: "Please enter your email address and password"});
+    }
+  })
+
+
   app.get("/logout", (req, res) => {
     req.logout();
     req.session.destroy();

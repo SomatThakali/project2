@@ -1,3 +1,5 @@
+{{!-- BOOTSTRAP CLEANED UP --}}
+
 {{!-- Custom CSS Stylesheets --}}
 <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/user.css">
 
@@ -26,28 +28,32 @@
 </nav>
 
 {{!-- Content --}}
-<div class="row mt-5">
+<div class="row">
     <div class="col-md-6 m-auto">
         <div class="card card-body">
-            <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
-            {{#if user}}
-
-            <div class="alert alert-danger"> {{message}}</div>
-
+            <h1 class="text-center mt-3 mb-3">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </h1>
+            <hr />
+            {{#if errors}}
+            {{#each errors}}
+            <div class="alert alert-danger"> {{msg}}</div>
+            {{/each}}
             {{/if}}
+
             <form action="/login" method="POST">
                 <div class="form-group">
                     <label for="email" class="font-weight-bold mb-0">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+                    <input type="email" id="email" name="email" class="form-control text-center" placeholder="Enter Email" />
                 </div>
                 <div class="form-group">
                     <label for="password" class="font-weight-bold mb-0">Password</label>
-                    <input type="password" id="password" name="password" class="form-control"
-                        placeholder="Enter Password" />
+                    <input type="password" id="password" name="password" class="form-control text-center" placeholder="Enter Password" />
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <button type="submit" class="btn btn-primary btn-block mt-4">Login</button>
             </form>
-            <p class="lead mt-4">
+
+            <p class="mt-4">
                 No Account? <a href="/register">Register</a>
             </p>
         </div>
