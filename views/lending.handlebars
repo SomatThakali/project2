@@ -103,6 +103,11 @@
                 <button type="submit" id="Submit" class="btn btn-dark">Submit</button>
             </div>
         </div>
+        <div class="row" id="confirmDiv">
+            <div class="col-md-12"></div>
+        </div>
+
+        </div>
     </form>
     <br />
     </tbody>
@@ -143,12 +148,16 @@
                 borrow_days: $("#borrow_days").val().trim(),
                 description: $("#descriptionInput").val().trim()
               });
+                var confirmDiv = $("<p>");
+                confirmDiv.append($("#nameInput").val().trim() + " was listed successfully!");
+                $("#confirmDiv").append(confirmDiv);
             }
           
             // A function for creating an author. Calls getAuthors upon completion
             function upsertItem(itemData) {
               $.post("/api/lending", itemData)
                 .then(getItems);
+                $("#confirmDiv").empty();
             }
           
             // Function for creating a new list row for authors
@@ -205,6 +214,7 @@
           
         // Function for handling what happens when the delete button is pressed
         function handleDeleteButtonPress() {
+            $("#confirmDiv").empty();
             console.log("deleting an item....");
               var listItemData = $(this).parent("td").parent("tr").data("item");
               console.log(listItemData);
@@ -214,6 +224,9 @@
                 url: "/api/lending/" + id
               })
                 .then(getItems);
+                    var confirmDiv = $("<p>");
+                    confirmDiv.append(listItemData.name + " was deleted.");
+                    $("#confirmDiv").append(confirmDiv);
             }
 
         function updateItem(item) {
