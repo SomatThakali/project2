@@ -121,12 +121,10 @@ module.exports = function(app) {
 
   app.post("/contactSubmission", (req, res) => {
     console.log("In Contact submission");
-    var messageCat = req.body.messageCat;
     var name = req.body.name;
     var email = req.body.email;
     var message = req.body.message;
     db.Contact.create({
-      messageCat: messageCat,
       name: name,
       email: email,
       message: message
@@ -138,4 +136,38 @@ module.exports = function(app) {
       }
     });
   });
+
+  app.get("/api/lending", function(req, res) {
+    db.Items.findAll({}).then(function(dbItems) {
+      res.json(dbItems);
+    });
+  });
+
+app.post("/api/lending", function(req,res) {
+  db.Items.create(req.body).then(function(dbItems) {
+    res.json(dbItems);
+  });
+
+app.delete("/api/lending/:id", function(req, res) {
+    db.Items.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbItems) {
+      res.json(dbItems);
+    });
+});
+
+app.put("/api/lending", function(req, res) {
+  db.Items.update(
+    req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbItems) {
+    res.json(dbItems);
+  });
+});
+});
 };
