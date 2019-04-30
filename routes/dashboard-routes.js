@@ -68,4 +68,8 @@ module.exports = function(app) {
       }
     );
   });
+
+  app.get("/dashboards", function(req, res) {
+    res.render("dashboards");
+  });
 };
