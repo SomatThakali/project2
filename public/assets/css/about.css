@@ -2,5 +2,11 @@
 /* Applied to: contact.handlebars */
 
 body {
-    text-align: center;
+  text-align: center;
+}
+#navbarSupportedContent {
+  font-family: "Amatic SC", cursive;
+  background-color: #5d5c5c;
+  color: white;
+  border-color: white;
 }
