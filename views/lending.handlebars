@@ -48,35 +48,36 @@
         </div>
     </div>
     <br />
-    <form class="collapse" id="addItem">
+    <form class="form" id="addItem" action="/items" method="post">
         <div class="form-row">
             <div class="col-2">
-                <input class="form-control" type="text" placeholder="Category">
+                <input name="category" class="form-control" type="text" placeholder="Category">
             </div>
             <div class="col-4">
-                <input class="form-control" type="text" placeholder="Item(s) Name">
+                <input class="form-control" id="nameInput" name="name" type="text" placeholder="Item(s) Name">
             </div>
             <div class="col-1">
-                <select class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
+                <select name="borrow_days" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
                 </select>
             </div>
             <div class="col">
-                <input class="form-control" type="text" placeholder="Description">
+                <input class="form-control" id="descriptionInput" name="description" type="text"
+                    placeholder="Description">
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-light">Submit</button>
+                <button type="submit" id="lendSubmit" class="btn btn-light">Submit</button>
             </div>
         </div>
     </form>
@@ -86,34 +87,41 @@
     <div class="row">
         <div class="col-md-12">
             <table class="table table-sm table-hover">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                </tr>
-            </tbody>
+
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">category</th>
+                        <th scope="col">items Name</th>
+                        <th scope="col">Borrow Days</th>
+                        <th scope="col">Description</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#each items}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td>{{category}}</td>
+                        <td>{{name}}</td>
+                        <td>{{borrow_days}}</td>
+                        <td>{{description}}</td>
+                    </tr>
+                    {{!-- <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr> --}}
+                </tbody>
+                {{/each}}
             </table>
         </div>
     </div>
