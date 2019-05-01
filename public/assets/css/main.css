@@ -1,39 +1,42 @@
 /* Applied to: (all .handlebars pages */
 
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 footer {
-    text-align: center;
-    background-color: lightgrey;
-    padding-top: 10px;
+  text-align: center;
+  background-color: lightgrey;
+  padding-top: 10px;
+}
+
+#navbarSupportedContent {
+  color: #ffffff;
+  background-color: #5d5c5c;
+}
+a:hover {
+  background-color: #ffcf02;
 }
 
 .navbar {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 h1 {
-
 }
 
 h2 {
-
 }
 
 h3 {
-
 }
 
 h4 {
-
 }
 
 h5 {
-
 }
 
 h6 {
-
 }

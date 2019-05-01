@@ -1,82 +1,79 @@
-var db = require("../models");
+let db = require("../models");
 
-// Routes
-// =============================================================
 module.exports = function(app) {
-  app.get("/lending", async (req, res) => {
-    res.render("lending", {title: "Lending"});
+  app.post("/items", (req, res) => {
+    console.log("In item submission");
+    console.log('DEBUG', req.body);
+    console.log('DEBUG user session', req.session.passport.user[0].id);
+
+    const newItem = { 
+      ...req.body, 
+      UserId: req.session.passport.user[0].id
+    }
+
+    console.log('DEBUG new item', newItem);
+
+    db.Item.create(newItem).then(function(err, resp) {
+      res.redirect("/lending");
+      if (err) {
+        console.log(err);
+      }
+    });
   });
 
-  app.get("/borrowing", (req, res) =>
-      db.Items.findAll().then(function(items) {
-        // console.log(items);
-        res.render("borrowing", {
-          name: items[0].dataValues.name,
+  app.get("/lending", function(req, res) {
+    console.log("In item getting");
 
-          name: items[0].name,
-          category: items[0].category,
-          description: items[0].description,
-          daysBorrow: items[0].borrow_days
-          // category: items.dataValues.category,
-          // description: items.dataValues.description,
-          // daysBorrow: items[0].borrow_days
-        })
-      })
-  );
-  // GET route for getting all of the posts
-  // app.get("/api/items", function(req, res) {
-  //   var query = {};
-  //   if (req.query.category_id) {
-  //     query.CategoryId = req.query.category_id;
-  //   }
-  //   db.Items.findAll({
-  //     where: query,
-  //     include: [db.Category]
-  //   }).then(function(dbItem) {
-  //     res.render("items");
-  //   });
-  // });
+    db.Item.findAll({}).then(function(items) {
+      console.log(items);
+      res.render("lending", { items: items });
+    });
+  });
+  app.get("/borrowing", function(req, res) {
+    const Sequelize = require("sequelize");
+    const op = Sequelize.Op;
 
-  // Get route for retrieving a single post
-//   app.get("/api/items/:id", function(req, res) {
-//     db.Item.findOne({
-//       where: {
-//         id: req.params.id
-//       }
-//     }).then(function(dbItem) {
-//       console.log(dbItem);
-//       res.json(dbItem);
-//     });
-//   });
+    console.log("In item getting");
 
-  // POST route for saving a new post
-  // app.post("/api/items", function(req, res) {
-  //   db.Item.create(req.body).then(function(dbItem) {
-  //     res.json(dbItem);
-  //   });
-  // });
+    db.Item.findAll({
+      where: {
+        id: {
+          [op.gt]: 2
+        }
+      }
+    }).then(function(items) {
+      return res.render("borrowing", { items: items });
+    });
+  });
 
-  // DELETE route for deleting posts
-  // app.delete("/api/items/:id", function(req, res) {
-  //   db.Item.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(dbItem) {
-  //     res.json(dbItem);
-  //   });
-  // });
+  app.put("/borrowing/:id", (req, res) => {
+    res.redirect("/borrowing");
+    let updatedValue = { isBorrowed: true };
 
-  // PUT route for updating posts
-  // app.put("/api/items", function(req, res) {
-  //   db.Item.update(
-  //     req.body,
-  //     {
-  //       where: {
-  //         id: req.body.id
-  //       }
-  //     }).then(function(dbItem) {
-  //     res.json(dbItem);
-  //   });
-  // });
+    db.Item.update(
+      updatedValue,
+      {
+        where: {
+          id: req.params.id
+        }
+      },
+      result => {
+        console.log(result);
+      }
+    );
+  });
+
+  app.delete("/borrowing/:id", (req, res) => {
+    db.Item.destroy(
+      {
+        where: {
+          id: req.params.id
+        }
+      },
+      res.redirect("/borrowing"),
+      result => {
+        console.log(result);
+      }
+    );
+  });
 };
