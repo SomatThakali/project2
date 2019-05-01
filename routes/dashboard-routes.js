@@ -21,10 +21,15 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/lending", function(req, res) {
+  app.get("/lending/:id", function(req, res) {
     console.log("In item getting");
 
-    db.Item.findAll({}).then(function(items) {
+    db.Item.findAll({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then(function(items) {
       console.log(items);
       res.render("lending", { items: items });
     });
