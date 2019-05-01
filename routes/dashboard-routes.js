@@ -3,7 +3,17 @@ let db = require("../models");
 module.exports = function(app) {
   app.post("/items", (req, res) => {
     console.log("In item submission");
-    db.Item.create(req.body).then(function(err, resp) {
+    console.log('DEBUG', req.body);
+    console.log('DEBUG user session', req.session.passport.user[0].id);
+
+    const newItem = { 
+      ...req.body, 
+      UserId: req.session.passport.user[0].id
+    }
+
+    console.log('DEBUG new item', newItem);
+
+    db.Item.create(newItem).then(function(err, resp) {
       res.redirect("/lending");
       if (err) {
         console.log(err);
@@ -37,6 +47,7 @@ module.exports = function(app) {
   });
 
   app.put("/borrowing/:id", (req, res) => {
+    res.redirect("/borrowing");
     let updatedValue = { isBorrowed: true };
 
     db.Item.update(
@@ -46,8 +57,6 @@ module.exports = function(app) {
           id: req.params.id
         }
       },
-
-      res.redirect("/borrowing"),
       result => {
         console.log(result);
       }
@@ -61,7 +70,6 @@ module.exports = function(app) {
           id: req.params.id
         }
       },
-
       res.redirect("/borrowing"),
       result => {
         console.log(result);
