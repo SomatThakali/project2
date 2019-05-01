@@ -2,5 +2,10 @@
 /* Applied to: register.handlebars */
 
 body {
-    text-align: center;
+  text-align: center;
+}
+
+.card {
+  font-family: "Laila", serif;
+  color: black !important;
 }

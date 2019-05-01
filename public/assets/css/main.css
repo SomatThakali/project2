@@ -3,6 +3,26 @@
 body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+
+  /* background: url(../images/background-pic.jpeg) no-repeat center center fixed; */
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/background-pic.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  opacity: 0.8;
+  filter: alpha(opacity=50);
 }
 
 footer {
@@ -10,20 +30,31 @@ footer {
   background-color: lightgrey;
   padding-top: 10px;
 }
-
 #navbarSupportedContent {
-  color: #ffffff;
-  background-color: #5d5c5c;
+  font-family: "Amatic SC", cursive;
+  font-size: xx-large;
+  color: white;
+  width: 100%;
+  height: 50px;
 }
+
 a:hover {
   background-color: #ffcf02;
 }
 
-.navbar {
-  margin-bottom: 30px;
+a:active {
+  background-color: #ffcf02 !important;
+  color: #5d5c5c !important;
 }
 
-h1 {
+.navbar {
+  margin-bottom: 30px;
+  background-color: #5d5c5c !important;
+  opacity: 0.8;
+}
+
+.nav-link {
+  color: white !important;
 }
 
 h2 {
