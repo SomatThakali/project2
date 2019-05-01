@@ -27,16 +27,22 @@
     <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
     <!-- Page Icon -->
     <link rel="icon" type="image/x-icon" href="/assets/images/icon.png" alt="icon">
-
+    <script src="https://code.jquery.com/jquery.js"></script>
     <title>Something Borrowed | {{title}}</title>
 
 </head>
 
 <body>
-
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    {{#if success_msg}}
+    <div class="alert alert-danger">{{success_msg}}</div>
+    {{/if}}
     {{{body}}}
 
     <br></br>
+
 
     <footer class="fixed-bottom">
         <h6>Something Borrowed &copy; 2019. All Rights Reserved</h6>
@@ -58,5 +64,9 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
 </body>
+{{!-- {{#if success_msg}}
+<div class="alert alert-success">{{success_msg}}</div>
+{{/if}} --}}
+
 
 </html>

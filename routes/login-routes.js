@@ -22,16 +22,24 @@ module.exports = function(app) {
           return next(err);
         }
 
-        res.render("dashboards", user[0].dataValues);
+        res.redirect(`dashboards/${user[0].dataValues.id}`);
       });
     })(req, res, next);
   });
 
+  // app.post("/login", (req, res, next) => {
+  //   // console.log("user: ", req.user);
+  //   passport.authenticate("local", {
+  //     successRedirect: `/dashboards/${req.user.userId}`,
+  //     failureRedirect: "/login",
+  //     failureFlash: true
+  //   })(req, res, next);
+  // });
+
   app.get("/logout", (req, res) => {
     req.logout();
-    req.flash("success_msg", "You are logout");
     req.session.destroy();
-    console.log("session end");
+    req.flash("success_msg", "You are logout");
     return res.redirect("/home");
   });
 };

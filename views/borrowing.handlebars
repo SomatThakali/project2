@@ -10,13 +10,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/dashboards">My Dashboard</a>
+        <a class="nav-link" href="/dashboards/{{user.id}}">My Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/lending">Lending</a>
+        <a class="nav-link" href="/lending/{{user.id}}">Lending</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/borrowing">Borrowing<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/borrowing/{{user.id}}">Borrowing<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/home">Log Out</a>
@@ -51,28 +51,26 @@
   <div class="row" style="text-align: center">
     <div class="col-md-12">
       <h2>Items Available:</h2>
-      <h4> Search for item(3) available in your neighborhood.</h4>
+      <h4> Search for item(s) available in your neighborhood.</h4>
+    </div>
+  </div>
+  <input type="text" id="myInput" class="form-control mb-4" placeholder="Search for names.." title="Type in a name" />
+  <div class="row">
+    <div class="col-md-12">
+      <a class="btn btn-outline-dark mb-2" href="/dashboards/{{user.id}}" role="button">Go Back</a>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">
-      <a class="btn btn-outline-dark" href="/dashboards" role="button">Go Back</a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-6">
-        <h3>want to borrow</h3>
-
-      </div>
-      <table>
+      <table id="myTable">
         <tr>
-          <th>Item</th>
           <th>Category</th>
+          <th>Item Name</th>
           <th>Description</th>
           <th>#Days to borrow</th>
+          <th>Lender</th>
+          <th>Borrow</th>
         </tr>
 
         <tbody>
@@ -81,18 +79,14 @@
           {{#unless this.isBorrowed}}
 
           <form action="/borrowing/{{this.id}}?_method=PUT" method="POST">
-
             <tr>
-              <button type="submit" class="btn btn-outline-primary mb-4 font-weight-bold">
-                <th scope="row">{{id}}</th>
-                <td>{{category}}</td>
-                <td>{{name}}</td>
-                <td>{{borrow_days}}</td>
-                <td>{{description}}</td>
-              </button>
+              <td>{{category}}</td>
+              <td>{{name}}</td>
+              <td>{{description}}</td>
+              <td>{{borrow_days}}</td>
+              <td>User {{UserId}}</td>
+              <td><button type="submit" class="btn btn-outline-dark">borrow</button></td>
             </tr>
-            <i class="fa fa-arrow-right"></i>
-
           </form>
 
         </tbody>
@@ -101,65 +95,23 @@
       </table>
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="search" style="text-align:center">
-        </div>
-        <h4>Search for an item</h4>
-
-        <form class="create-form">
-
-          <div class="form-group">
-            <input type="text" id="ca" name="name"><br>
-            <button type="submit" class="btn btn-secondary">SUBMIT</button>
-          </div>
-        </form>
-
-      </div>
-    </div>
   </div>
 </div>
-</div>
-</div>
-
-<div class="col-md-6">
-  <table class="table table-sm table-hover">
-    <h3>borrowed</h3>
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">category</th>
-        <th scope="col">items Name</th>
-        <th scope="col">Borrow Days</th>
-        <th scope="col">Description</th>
-
-      </tr>
-    </thead>
-
-    <tbody>
-
-      {{#each items}}
-      {{#if this.isBorrowed}}
-
-      <form action="/borrowing/{{this.id}}?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-outline-primary mb-4 font-weight-bold">
-          <tr>
-            <th scope="row">{{id}}</th>
-            <td>{{category}}</td>
-            <td>{{name}}</td>
-            <td>{{borrow_days}}</td>
-            <td>{{description}}</td>
-          </tr>
-          <i class="fa fa-trash"></i>
-        </button>
-      </form>
-
-    </tbody>
-    {{/if}}
-    {{/each}}
-  </table>
-</div>
-</div>
 
 
-</div>
+<script>
+
+  $("#myInput").on("keyup", function () {
+    var value = $(this)
+      .val()
+      .toUpperCase();
+    $("#myTable tr").filter(function () {
+      $(this).toggle(
+        $(this)
+          .text()
+          .toUpperCase()
+          .indexOf(value) > -1
+      );
+    });
+  });
+</script>
