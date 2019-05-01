@@ -1,6 +1,15 @@
 /* Applied to: about.handlebars */
 /* Applied to: contact.handlebars */
 
+/* body {
+  text-align: center;
+  background: url("../images/background-pic.jpeg");
+  background: (76, 175, 80, 0.1);
+} */
 body {
-    text-align: center;
+  background: url(../images/background-pic.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
