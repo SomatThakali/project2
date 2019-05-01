@@ -47,21 +47,12 @@
 </style>
 
 <div class="container">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
-
->>>>>>> aab8a69c02ffb7cbf62d27311e078fc440e6df03
-=======
->>>>>>> 69ae661775ca7387583996abf6ce03976b4b22c5
   <div class="row" style="text-align: center">
     <div class="col-md-12">
       <h2>Items Available:</h2>
       <h4> Search for item(3) available in your neighborhood.</h4>
     </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
   </div>
 
   <div class="row">
@@ -72,48 +63,50 @@
 
   <div class="row">
     <div class="col-md-12">
-    <table>
-      <tr>
-        <th>Item</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>#Days to borrow</th>
-      </tr>
-      <tr>
-        <td>{{name}}</td>
-        <td>{{category}}</td>
-        <td>{{description}}</td>
-        <td>{{daysBorrow}}</td>
-      </tr>
-    </table>
+      <div class="col-md-6">
+        <h3>want to borrow</h3>
 
-    <ol>
-    {{!-- {{#each name}}
-    {{/each}} --}}
-    </ol>
-=======
->>>>>>> 69ae661775ca7387583996abf6ce03976b4b22c5
-  </div>
+      </div>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>#Days to borrow</th>
+        </tr>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="search" style="text-align:center">
-<<<<<<< HEAD
-      <h4>Search for an item</h4>
-=======
-  </div>
+        <tbody>
 
+          {{#each items}}
+          {{#unless this.isBorrowed}}
 
+          <form action="/borrowing/{{this.id}}?_method=PUT" method="POST">
 
-=======
->>>>>>> 69ae661775ca7387583996abf6ce03976b4b22c5
+            <tr>
+              <button type="submit" class="btn btn-outline-primary mb-4 font-weight-bold">
+                <th scope="row">{{id}}</th>
+                <td>{{category}}</td>
+                <td>{{name}}</td>
+                <td>{{borrow_days}}</td>
+                <td>{{description}}</td>
+              </button>
+            </tr>
+            <i class="fa fa-arrow-right"></i>
 
+          </form>
+
+        </tbody>
+        {{/unless}}
+        {{/each}}
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="search" style="text-align:center">
+        </div>
         <h4>Search for an item</h4>
-<<<<<<< HEAD
->>>>>>> aab8a69c02ffb7cbf62d27311e078fc440e6df03
-=======
 
->>>>>>> 69ae661775ca7387583996abf6ce03976b4b22c5
         <form class="create-form">
 
           <div class="form-group">
@@ -121,104 +114,52 @@
             <button type="submit" class="btn btn-secondary">SUBMIT</button>
           </div>
         </form>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
       </div>
     </div>
   </div>
 </div>
-=======
-=======
->>>>>>> 69ae661775ca7387583996abf6ce03976b4b22c5
+</div>
+</div>
 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <h3>want to borrow</h3>
-        <table class="table table-sm table-hover">
+<div class="col-md-6">
+  <table class="table table-sm table-hover">
+    <h3>borrowed</h3>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">category</th>
+        <th scope="col">items Name</th>
+        <th scope="col">Borrow Days</th>
+        <th scope="col">Description</th>
 
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">category</th>
-              <th scope="col">items Name</th>
-              <th scope="col">Borrow Days</th>
-              <th scope="col">Description</th>
+      </tr>
+    </thead>
 
-            </tr>
-          </thead>
+    <tbody>
 
-          <tbody>
+      {{#each items}}
+      {{#if this.isBorrowed}}
 
-            {{#each items}}
-            {{#unless this.isBorrowed}}
+      <form action="/borrowing/{{this.id}}?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-outline-primary mb-4 font-weight-bold">
+          <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{category}}</td>
+            <td>{{name}}</td>
+            <td>{{borrow_days}}</td>
+            <td>{{description}}</td>
+          </tr>
+          <i class="fa fa-trash"></i>
+        </button>
+      </form>
 
-            <form action="/borrowing/{{this.id}}?_method=PUT" method="POST">
-
-              <tr>
-                <button type="submit" class="btn btn-outline-primary mb-4 font-weight-bold">
-                  <th scope="row">{{id}}</th>
-                  <td>{{category}}</td>
-                  <td>{{name}}</td>
-                  <td>{{borrow_days}}</td>
-                  <td>{{description}}</td>
-                </button>
-              </tr>
-              <i class="fa fa-arrow-right"></i>
-
-            </form>
-
-          </tbody>
-          {{/unless}}
-          {{/each}}
-        </table>
-      </div>
+    </tbody>
+    {{/if}}
+    {{/each}}
+  </table>
+</div>
+</div>
 
 
-
-      <div class="col-md-6">
-        <table class="table table-sm table-hover">
-          <h3>borrowed</h3>
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">category</th>
-              <th scope="col">items Name</th>
-              <th scope="col">Borrow Days</th>
-              <th scope="col">Description</th>
-
-            </tr>
-          </thead>
-
-          <tbody>
-
-            {{#each items}}
-            {{#if this.isBorrowed}}
-
-            <form action="/borrowing/{{this.id}}?_method=DELETE" method="POST">
-              <button type="submit" class="btn btn-outline-primary mb-4 font-weight-bold">
-                <tr>
-                  <th scope="row">{{id}}</th>
-                  <td>{{category}}</td>
-                  <td>{{name}}</td>
-                  <td>{{borrow_days}}</td>
-                  <td>{{description}}</td>
-                </tr>
-                <i class="fa fa-trash"></i>
-              </button>
-            </form>
-
-          </tbody>
-          {{/if}}
-          {{/each}}
-        </table>
-      </div>
-    </div>
-
-
-  </div>
-<<<<<<< HEAD
->>>>>>> aab8a69c02ffb7cbf62d27311e078fc440e6df03
-=======
->>>>>>> 69ae661775ca7387583996abf6ce03976b4b22c5
+</div>
