@@ -33,6 +33,7 @@ footer {
 #navbarSupportedContent {
   font-family: "Amatic SC", cursive;
   font-size: xx-large;
+  background-color: #5d5c5c;
   color: white;
   width: 100%;
   height: 50px;
@@ -42,15 +43,8 @@ a:hover {
   background-color: #ffcf02;
 }
 
-a:active {
-  background-color: #ffcf02 !important;
-  color: #5d5c5c !important;
-}
-
-.navbar {
-  margin-bottom: 30px;
-  background-color: #5d5c5c !important;
-  opacity: 0.8;
+.nav-link {
+  color: white !important;
 }
 
 .nav-link {

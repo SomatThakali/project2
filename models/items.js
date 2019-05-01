@@ -14,16 +14,16 @@ module.exports = (sequelize, DataTypes) => {
   Item.associate = function(models) {
     // associations can be defined here
     Item.belongsTo(models.User, {
-      // foreignKey: {
-      //   allowNull: false
-      // }
+      foreignKey: {
+        allowNull: false
+      }
       // UserId: {
       //   type: DataTypes.INTEGER,
       //   defaultValue: 1,
       //   references: "users", // <<< Note, its table's name, not object name
       //   referencesKey: "id" // <<< Note, its a column name
       // }
-      foreignKey: "userId"
+      // foreignKey: "userId"
     });
   };
   return Item;
