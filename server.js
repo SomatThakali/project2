@@ -22,13 +22,16 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(
   session({
     secret: "cool"
   })
 );
+
+
+app.use(passport.session());
+
+
 
 app.use((req, res, next) => {
   if (req.isAuthenticated) {
