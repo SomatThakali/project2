@@ -21,3 +21,7 @@ h1 {
   font-family: "Laila", serif;
   color: white;
 }
+#submitConfirm {
+  text-align: center;
+  color: #04bab5;
+}

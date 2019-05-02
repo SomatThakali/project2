@@ -1,4 +1,5 @@
 const db = require("../models");
+const moment = require('moment');
 
 const passport = require("passport");
 const { forwardAuthenticated } = require("../config/auth");
@@ -21,8 +22,16 @@ module.exports = function(app) {
         if (err) {
           return next(err);
         }
-
-        res.render("dashboards", user[0].dataValues);
+        res.render("dashboards", {
+          firtsName: user[0].dataValues.firstName,
+          lastName: user[0].dataValues.lastName,
+          email: user[0].dataValues.email,
+          street: user[0].dataValues.street,
+          city: user[0].dataValues.city,
+          state: user[0].dataValues.state,
+          zipcode: user[0].dataValues.zipcode,
+          createdAt: moment(user[0].dataValues.createdAt).format('MMM Do YYYY')
+        })
       });
     })(req, res, next);
   });

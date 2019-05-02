@@ -61,18 +61,20 @@
                     Submit
                 </button>
             </form>
+            <div id="submitConfirm"></div>
         </div>
     </div>
 </div>
 
 {{!-- Form Submission Sßcript --}}
+<script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
 <script>
     $("#contactForm").submit(function (e) {
         var messageCat = $("#messageCat").val();
         var name = $("#nameInput").val();
         var email = $("#emailInput").val();
         var message = $("#messageInput").val();
-        var data = { "messageCat": messageCat, "name": name, "email": email, "message": message };
+        var data = { "messageCat": messageCat, "name": name, "email": email, "message": message };        
         e.preventDefault();
         $.ajax({
             url: "/contactSubmission",
@@ -82,5 +84,8 @@
                 alert("success");
             }
         });
+        //$("#messageCat").val();
+        $("#contactForm").empty();
+        $("#submitConfirm").append("Thank you. Your message has been delivered.");
     });
 </script>
