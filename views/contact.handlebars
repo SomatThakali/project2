@@ -2,9 +2,10 @@
 {{!-- JavaScript at bottom of page to be reviewed --}}
 
 {{!-- Custom CSS Stylesheets --}}
-<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/about.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/contact.css">
 
 {{!-- Navbar --}}
+<div id="background"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,17 +43,19 @@
         <div class="col-md-9">
             <form class="form" id="contactForm" action="/contactSubmission" method="post">
                 <div class="form-group">
-                    <label for="nameInput" class="font-weight-bold">NAME:</label>
+                    <label for="nameInput" class="label font-weight-bold">NAME:</label>
                     <input type="name" class="form-control text-center" id="nameInput" placeholder="Name" />
                 </div>
                 <div class="form-group">
-                    <label for="emailInput" class="font-weight-bold">EMAIL ADDRESS:</label>
-                    <input type="email" class="form-control text-center" id="emailInput" placeholder="User@example.com" />
+                    <label for="emailInput" class="label font-weight-bold">EMAIL ADDRESS:</label>
+                    <input type="email" class="form-control text-center" id="emailInput"
+                        placeholder="User@example.com" />
                 </div>
 
                 <div class="form-group">
-                    <label for="messageArea" class="font-weight-bold">MESSAGE:</label>
-                    <textarea class="form-control text-center" id="messageInput" rows="5" placeholder="Questions, comments, or any feedback..."></textarea>
+                    <label for="messageArea" class="label font-weight-bold">MESSAGE:</label>
+                    <textarea class="form-control text-center" id="messageInput" rows="5"
+                        placeholder="Questions, comments, or any feedback..."></textarea>
                 </div>
                 <button id="submit" class="btn btn-secondary font-weight-bold">
                     Submit

@@ -1,14 +1,7 @@
-/* Applied to: home.handlebars */
-
-body {
-  text-align: center;
-}
-
 #logo-text1 {
   font-family: "Lato", sans-serif;
   color: #f2cc3d;
   text-shadow: 2px 2px #04bab5;
-  font-size: 50px !important;
   -webkit-text-stroke: 1px black;
 }
 
@@ -20,18 +13,16 @@ body {
 }
 
 h1 {
-  font-size: 70px !important;
+  font-size: 5vw !important;
 }
 
 p {
   font-family: "Amatic SC", cursive;
-  color: #5d5c5c;
-  font-size: x-large;
+  color: white;
+  font-size: 2vw;
 }
 
 .reg {
   font-family: "Laila", serif;
-  color: black !important;
+  color: white !important;
 }
-
-/* need to check css loading order. font-size and font-weight currently do not apply */
