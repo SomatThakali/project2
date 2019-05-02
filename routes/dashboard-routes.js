@@ -32,8 +32,6 @@ module.exports = function(app) {
       },
       include: [db.User]
     }).then(function(items) {
-      // const Sequelize = require("sequelize");
-      // const Op = Sequelize.Op;
       db.Item.findAll({
         where: {
           userId: {
@@ -42,7 +40,10 @@ module.exports = function(app) {
         },
         include: [db.User]
       }).then(function(itemsBrr) {
+        console.log("items to borror: ", itemsBrr);
+        console.log("Brr userId", itemsBrr[0].dataValues.UserId);
         res.render("dashboards", {
+          borrowerUser: itemsBrr[0].dataValues.UserId,
           itemsBrr: itemsBrr,
           items: items,
           user: user
@@ -115,20 +116,4 @@ module.exports = function(app) {
       }
     );
   });
-
-  // app.update("/lending/:id", (req, res) => {
-  //   let user = req.session.passport.user[0];
-  //   res.redirect(`/lending/${user.id}`);
-  //   db.Item.update(
-  //     {
-  //       where: {
-  //         id: req.params.id
-  //       }
-  //     },
-
-  //     result => {
-  //       console.log(result);
-  //     }
-  //   );
-  // });
 };
