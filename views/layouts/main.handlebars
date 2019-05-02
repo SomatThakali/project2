@@ -27,16 +27,27 @@
     <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
     <!-- Page Icon -->
     <link rel="icon" type="image/x-icon" href="/assets/images/icon.png" alt="icon">
-
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <title>Something Borrowed | {{title}}</title>
 
 </head>
 
 <body>
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    {{#if success_msg}}
+    <div class="alert alert-danger">{{success_msg}}</div>
+    {{/if}}
+    {{#if message}}
+    <div class="alert alert-danger">{{message}}</div>
+    {{/if}}
 
     {{{body}}}
 
     <br></br>
+
 
     <footer class="fixed-bottom">
         <h6>Something Borrowed &copy; 2019. All Rights Reserved</h6>
@@ -62,5 +73,7 @@
         integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
         crossorigin="anonymous"></script>
 </body>
+
+
 
 </html>

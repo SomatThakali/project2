@@ -7,7 +7,15 @@ module.exports = (sequelize, DataTypes) => {
       category: DataTypes.STRING,
       description: DataTypes.STRING,
       borrow_days: DataTypes.INTEGER,
-      isBorrowed: DataTypes.BOOLEAN
+      isBorrowed: DataTypes.BOOLEAN,
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATEONLY
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATEONLY
+      }
     },
     {}
   );

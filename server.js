@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const app = express();
 
-const PORT = process.env.PORT || 7884;
+const PORT = process.env.PORT || 7894;
 
 let db = require("./models");
 
@@ -42,8 +42,10 @@ app.use(function(req, res, next) {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
+  res.locals.user = req.user || null;
   next();
 });
+
 /** routes */
 require("./routes/about")(app);
 require("./routes/registration-routes")(app);

@@ -1,6 +1,7 @@
 {{!-- Custom CSS Stylesheets --}}
 <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/browse.css">
 
+
 {{!-- Navbar --}}
 <div id="background"></div>
 
@@ -12,13 +13,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/dashboards">My Dashboard</a>
+                <a class="nav-link" href="/dashboards/{{user.id}}">My Dashboard</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/lending">Lending<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/lending/{{user.id}}">Lending<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/borrowing">Borrowing</a>
+                <a class="nav-link" href="/borrowing/{{user.id}}">Borrowing</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/home">Log Out</a>
@@ -47,7 +48,7 @@
     <div class="row">
         <div class="col-md-12 mt-3">
             <button type="button" class="btn btn-dark" data-toggle="collapse" href="#addItem">ADD ITEM(S)</button>
-            <a class="btn btn-outline-dark" href="/dashboards" role="button">Go Back</a>
+            <a class="btn btn-outline-dark" href="/dashboards/{{user.id}}" role="button">Go Back</a>
         </div>
     </div>
 
@@ -105,36 +106,26 @@
 
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">category</th>
                         <th scope="col">items Name</th>
                         <th scope="col">Borrow Days</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Delete</th>
 
                     </tr>
                 </thead>
 
                 <tbody>
                     {{#each items}}
-                    <tr>
-                        <th scope="row">{{id}}</th>
-                        <td>{{category}}</td>
-                        <td>{{name}}</td>
-                        <td>{{borrow_days}}</td>
-                        <td>{{description}}</td>
-                    </tr>
-                    {{!-- <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr> --}}
+                    <form action="/lending/{{this.id}}?_method=DELETE" method="POST">
+                        <tr>
+                            <td>{{category}}</td>
+                            <td>{{name}}</td>
+                            <td>{{borrow_days}}</td>
+                            <td>{{description}}</td>
+                            <td><button type="submit" class="btn btn-outline-dark">delete</button></td>
+                        </tr>
+                    </form>
                 </tbody>
                 {{/each}}
             </table>

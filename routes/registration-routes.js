@@ -92,15 +92,7 @@ module.exports = function(app) {
               zipcode: req.body.zipcode,
               password: hash
             });
-            res.render("dashboards", {
-              firstName,
-              lastName,
-              email,
-              street,
-              city,
-              state,
-              zipcode
-            });
+            res.redirect("login");
           });
         }
       });

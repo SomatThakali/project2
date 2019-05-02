@@ -22,25 +22,16 @@ module.exports = function(app) {
         if (err) {
           return next(err);
         }
-        res.render("dashboards", {
-          firtsName: user[0].dataValues.firstName,
-          lastName: user[0].dataValues.lastName,
-          email: user[0].dataValues.email,
-          street: user[0].dataValues.street,
-          city: user[0].dataValues.city,
-          state: user[0].dataValues.state,
-          zipcode: user[0].dataValues.zipcode,
-          createdAt: moment(user[0].dataValues.createdAt).format('MMM Do YYYY')
-        })
+        res.redirect(`dashboards/${user[0].dataValues.id}`);
+
       });
     })(req, res, next);
   });
 
   app.get("/logout", (req, res) => {
     req.logout();
-    req.flash("success_msg", "You are logout");
     req.session.destroy();
-    console.log("session end");
+    req.flash("success_msg", "You are logout");
     return res.redirect("/home");
   });
 };
