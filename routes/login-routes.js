@@ -21,20 +21,10 @@ module.exports = function(app) {
         if (err) {
           return next(err);
         }
-
         res.redirect(`dashboards/${user[0].dataValues.id}`);
       });
     })(req, res, next);
   });
-
-  // app.post("/login", (req, res, next) => {
-  //   // console.log("user: ", req.user);
-  //   passport.authenticate("local", {
-  //     successRedirect: `/dashboards/${req.user.userId}`,
-  //     failureRedirect: "/login",
-  //     failureFlash: true
-  //   })(req, res, next);
-  // });
 
   app.get("/logout", (req, res) => {
     req.logout();

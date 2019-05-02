@@ -95,24 +95,26 @@
 
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">category</th>
                         <th scope="col">items Name</th>
                         <th scope="col">Borrow Days</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Delete</th>
 
                     </tr>
                 </thead>
 
                 <tbody>
                     {{#each items}}
-                    <tr>
-                        <th scope="row"> {{ @index}}</th>
-                        <td>{{category}}</td>
-                        <td>{{name}}</td>
-                        <td>{{borrow_days}}</td>
-                        <td>{{description}}</td>
-                    </tr>
+                    <form action="/lending/{{this.id}}?_method=DELETE" method="POST">
+                        <tr>
+                            <td>{{category}}</td>
+                            <td>{{name}}</td>
+                            <td>{{borrow_days}}</td>
+                            <td>{{description}}</td>
+                            <td><button type="submit" class="btn btn-outline-dark">delete</button></td>
+                        </tr>
+                    </form>
                 </tbody>
                 {{/each}}
             </table>

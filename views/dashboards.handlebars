@@ -80,6 +80,7 @@
                                     <th scope="col">items</th>
                                     {{!-- <th scope="col">Borrow Days</th> --}}
                                     <th scope="col">Description</th>
+                                    {{!-- <th scope="col">Borrower</th> --}}
 
                                 </tr>
                             </thead>
@@ -91,6 +92,7 @@
                                     <td>{{name}}</td>
                                     {{!-- <td>{{borrow_days}}</td> --}}
                                     <td>{{description}}</td>
+                                    {{!-- <td>{{UserId}}</td> --}}
                                 </tr>
                             </tbody>
                             {{/each}}
@@ -116,26 +118,19 @@
 
                     <thead>
                         <tr>
-
                             <th scope="col">category</th>
                             <th scope="col">items</th>
                             {{!-- <th scope="col">Borrow Days</th> --}}
                             <th scope="col">Description</th>
                             {{!-- <th scope="col">Date Listed</th> --}}
                             <th scope="col">Lender</th>
-
-
                         </tr>
                     </thead>
 
                     <tbody>
                         {{#each itemsBrr}}
                         {{#if this.isBorrowed}}
-
-                        {{!-- <form action="/borrowing/{{user.id}}{{this.id}}?_method=DELETE" method="POST">
-                            <button type="submit" class="btn btn-outline-primary mb-4 font-weight-bold"> --}}
                         <tr>
-
                             <td>{{category}}</td>
                             <td>{{name}}</td>
                             {{!-- <td>{{borrow_days}}</td> --}}
@@ -143,13 +138,9 @@
                             {{!-- <td>{{createdAt}}</td> --}}
                             <td>User {{UserId}}</td>
                         </tr>
-                        {{!-- <i class="fa fa-trash"></i> --}}
                         </button>
-                        </form>
-
                     </tbody>
                     {{/if}}
-                    </tbody>
                     {{/each}}
                 </table>
             </div>

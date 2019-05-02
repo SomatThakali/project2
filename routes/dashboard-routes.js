@@ -23,17 +23,17 @@ module.exports = function(app) {
 
   app.get("/dashboards/:id", (req, res) => {
     let user = req.session.passport.user[0];
-
-    // res.render("dashboards", { title: "Profile", user: user });
+    const Sequelize = require("sequelize");
+    const Op = Sequelize.Op;
     db.Item.findAll({
       where: {
-        userId: req.params.id
+        userId: req.params.id,
+        [Op.and]: { isBorrowed: true }
       },
       include: [db.User]
     }).then(function(items) {
-      // res.render("dashboards", { items: items, user: user });
-      const Sequelize = require("sequelize");
-      const Op = Sequelize.Op;
+      // const Sequelize = require("sequelize");
+      // const Op = Sequelize.Op;
       db.Item.findAll({
         where: {
           userId: {
@@ -100,10 +100,26 @@ module.exports = function(app) {
     );
   });
 
-  // app.delete("/lending/:id", (req, res) => {
+  app.delete("/lending/:id", (req, res) => {
+    let user = req.session.passport.user[0];
+    res.redirect(`/lending/${user.id}`);
+    db.Item.destroy(
+      {
+        where: {
+          id: req.params.id
+        }
+      },
+
+      result => {
+        console.log(result);
+      }
+    );
+  });
+
+  // app.update("/lending/:id", (req, res) => {
   //   let user = req.session.passport.user[0];
   //   res.redirect(`/lending/${user.id}`);
-  //   db.Item.destroy(
+  //   db.Item.update(
   //     {
   //       where: {
   //         id: req.params.id

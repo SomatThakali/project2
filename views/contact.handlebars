@@ -47,12 +47,14 @@
                 </div>
                 <div class="form-group">
                     <label for="emailInput" class="font-weight-bold">EMAIL ADDRESS:</label>
-                    <input type="email" class="form-control text-center" id="emailInput" placeholder="User@example.com" />
+                    <input type="email" class="form-control text-center" id="emailInput"
+                        placeholder="User@example.com" />
                 </div>
 
                 <div class="form-group">
                     <label for="messageArea" class="font-weight-bold">MESSAGE:</label>
-                    <textarea class="form-control text-center" id="messageInput" rows="5" placeholder="Questions, comments, or any feedback..."></textarea>
+                    <textarea class="form-control text-center" id="messageInput" rows="5"
+                        placeholder="Questions, comments, or any feedback..."></textarea>
                 </div>
                 <button id="submit" class="btn btn-secondary font-weight-bold">
                     Submit
@@ -61,23 +63,3 @@
         </div>
     </div>
 </div>
-
-{{!-- Form Submission Sßcript --}}
-<script>
-    $("#contactForm").submit(function (e) {
-        var messageCat = $("#messageCat").val();
-        var name = $("#nameInput").val();
-        var email = $("#emailInput").val();
-        var message = $("#messageInput").val();
-        var data = { "messageCat": messageCat, "name": name, "email": email, "message": message };
-        e.preventDefault();
-        $.ajax({
-            url: "/contactSubmission",
-            data: data,
-            type: "post",
-            success: function () {
-                alert("success");
-            }
-        });
-    });
-</script>
