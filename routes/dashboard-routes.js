@@ -41,7 +41,6 @@ module.exports = function(app) {
         include: [db.User]
       }).then(function(itemsBrr) {
         res.render("dashboards", {
-          borrowerUser: itemsBrr[0].dataValues.UserId,
           itemsBrr: itemsBrr,
           items: items,
           user: user
