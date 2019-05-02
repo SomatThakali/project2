@@ -1,18 +1,59 @@
 /* Applied to: borrowing.handlebars */
 /* Applied to: lending.handlebars */
 
+body {
+  font-family: "Laila", serif;
+  color: white !important;
+}
+
+th {
+  font-family: "Laila", serif;
+  color: white !important;
+}
+tr {
+  font-family: "Laila", serif;
+  color: white !important;
+  background-color: #04bab5;
+  opacity: 0.8;
+}
+
+h1 {
+  font-family: "Lato", sans-serif;
+  color: #04bab5;
+  text-shadow: 2px 2px #f2cc3d;
+  -webkit-text-stroke: 1px black;
+  font-size: 4vw;
+  text-align: center;
+}
+h2 {
+  font-family: "Laila", serif;
+  color: #f2cc3d;
+  font-size: xx-large;
+  -webkit-text-stroke: 1px black;
+}
+.btn {
+  font-family: "Amatic SC", cursive;
+  color: white;
+  font-size: x-large;
+  background-color: #5d5c5c;
+  float: right;
+}
+.btn:hover {
+  color: #04bab5;
+  background-color: #ffcf02;
+}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
-
 tr:nth-child(even) {
   background-color: #dddddd;
 }

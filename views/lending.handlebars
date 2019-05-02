@@ -3,6 +3,8 @@
 
 
 {{!-- Navbar --}}
+<div id="background"></div>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,23 +58,32 @@
 
         <div class="form-row">
             <div class="col-2">
-                <input name="category" class="form-control" type="text" placeholder="Category">
+            <select class="form-control" name="category">
+                <option value="">Category</option>
+                <option value="Tools">Tools</option>
+                <option value="Appliances">Appliances</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Decor">Decor</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Kitchen">Kitchen</option>
+                <option value="Bathroom">Bathroom</option>
+                <option value="Heating">Heating</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Storage">Storage</option>
+                <option value="Other">Other</option>
+                </select>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <input class="form-control" id="nameInput" name="name" type="text" placeholder="Item(s) Name">
             </div>
-            <div class="col-1">
-                <select name="borrow_days" class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
+            <div class="col-2">
+                <select class="form-control" name="borrow_days">
+                <option value="">#Borrow Days</option>
+                <option value="7">7 days</option>
+                <option value="10">10 days</option>
+                <option value="14">14 days</option>
+                <option value="30">30 days</option>
+                <option value="60">60 days</option>
                 </select>
             </div>
             <div class="col">
