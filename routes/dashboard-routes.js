@@ -40,8 +40,6 @@ module.exports = function(app) {
         },
         include: [db.User]
       }).then(function(itemsBrr) {
-        console.log("items to borror: ", itemsBrr);
-        console.log("Brr userId", itemsBrr[0].dataValues.UserId);
         res.render("dashboards", {
           borrowerUser: itemsBrr[0].dataValues.UserId,
           itemsBrr: itemsBrr,

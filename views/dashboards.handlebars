@@ -84,16 +84,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 {{#each items}}
                                 <tr>
                                     <td>{{category}}</td>
                                     <td>{{name}}</td>
                                     {{!-- <td>{{borrow_days}}</td> --}}
                                     <td>{{description}}</td>
-
-                                    {{/each}}
                                     <td>User {{borrowerUser}}</td>
                                 </tr>
+                                {{/each}}
+
                             </tbody>
                         </table>
                     </div>
