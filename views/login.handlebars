@@ -34,6 +34,9 @@
             {{#if error}}
             <div class="alert alert-danger">{{error}}</div>
             {{/if}}
+            {{#if success_msg}}
+            <div class="alert  alert-success">{{success_msg}}</div>
+            {{/if}}
             <form action="/login" method="POST">
                 <div class="form-group">
                     <label for="email" class="font-weight-bold mb-0">Email</label>

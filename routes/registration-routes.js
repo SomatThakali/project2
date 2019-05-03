@@ -82,6 +82,7 @@ module.exports = function(app) {
           });
         } else {
           bcrypt.hash(password, 10, function(err, hash) {
+            req.flash("success_msg", "You are now registered and can log in");
             db.User.create({
               firstName: req.body.firstName,
               lastName: req.body.lastName,
