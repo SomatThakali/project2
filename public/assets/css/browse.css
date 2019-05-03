@@ -6,17 +6,6 @@ body {
   color: white !important;
 }
 
-th {
-  font-family: "Laila", serif;
-  color: white !important;
-}
-tr {
-  font-family: "Laila", serif;
-  color: white !important;
-  background-color: #04bab5;
-  opacity: 0.8;
-}
-
 h1 {
   font-family: "Lato", sans-serif;
   color: #04bab5;
@@ -37,10 +26,12 @@ h2 {
   font-size: x-large;
   background-color: #5d5c5c;
   float: right;
+  transition: transform 0.2s;
 }
 .btn:hover {
   color: #04bab5;
   background-color: #ffcf02;
+  transform: scale(1.2);
 }
 
 table {
@@ -48,12 +39,40 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-td,
 th {
+  font-family: "Laila", serif;
+  color: white !important;
+  text-align: center !important;
   border: 1px solid #dddddd;
-  text-align: left;
   padding: 8px;
 }
+tr {
+  font-family: "Laila", serif;
+  color: #333232 !important;
+  background-color: #04bab5;
+  opacity: 0.8;
+}
 tr:nth-child(even) {
-  background-color: #dddddd;
+  font-family: "Laila", serif;
+  color: #333232 !important;
+  background-color: #04bab5 !important;
+  opacity: 0.8;
+}
+
+/* tbody {
+  font-family: "Laila", serif;
+  color: #333232 !important;
+  background-color: #04bab5 !important;
+  opacity: 0.8;
+} */
+
+.firstrow {
+  background-color: #5d5c5c !important;
+  opacity: 0.8;
+}
+#myInput {
+  opacity: 0.9;
+}
+#myInput:active {
+  border: none;
 }

@@ -7,7 +7,7 @@ const session = require("express-session");
 const multer = require("multer");
 const app = express();
 
-const PORT = process.env.PORT || 7894;
+const PORT = process.env.PORT || 8080;
 
 let db = require("./models");
 
