@@ -4,9 +4,10 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const multer = require("multer");
 const app = express();
 
-const PORT = process.env.PORT || 7894;
+const PORT = process.env.PORT || 8080;
 
 let db = require("./models");
 
@@ -44,6 +45,15 @@ app.use(function(req, res, next) {
   res.locals.error = req.flash("error");
   res.locals.user = req.user || null;
   next();
+});
+
+let storage = multer.diskStorage({
+  destination: function(req, file, callback) {
+    callback(null, "./public/assets/images");
+  },
+  filename: function(req, file, callback) {
+    callback(null, file.fieldname + "-" + Date.now());
+  }
 });
 
 /** routes */

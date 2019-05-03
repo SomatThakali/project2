@@ -56,3 +56,20 @@ p {
   font-family: "Laila", serif;
   color: white;
 }
+.flash {
+  animation-name: flash;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+@keyframes flash {
+  from {
+    color: #04bab5;
+  }
+  to {
+    color: #f2cc3d;
+  }
+}

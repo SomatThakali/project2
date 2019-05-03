@@ -38,6 +38,12 @@
     </div>
 </div>
 
+<form action="/pictures/upload" method="POST" enctype="multipart/form-data">
+    Select an image to upload:
+    <input type="file" name="image">
+    <input type="submit" value="Upload Image">
+</form>
+
 <div class="container">
     <div class="col-sm-2"></div>
     <div id="user" class="col-md-6">
@@ -62,10 +68,9 @@
                 <h5>Address: {{user.street}} {{user.city}} {{user.state}} {{user.zipcode}}</h5>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm">
-                <h5>Member Since:{{user.createdAt}} </h5>
-            </div>
+
+        <div class="col-sm">
+            <h5>Member Since: {{user.createdAt}} </h5>
         </div>
 
 
@@ -143,21 +148,25 @@
                             <th scope="col">Description</th>
                             <th scope="col">Date Listed</th>
                             <th scope="col">Lender</th>
+                            <th scope="col">Return</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {{#each itemsBrr}}
                         {{#if this.isBorrowed}}
-                        <tr>
-                            <td>{{category}}</td>
-                            <td>{{name}}</td>
-                            {{!-- <td>{{borrow_days}}</td> --}}
-                            <td>{{description}}</td>
-                            <td>{{createdAt}}</td>
-                            <td>User {{UserId}}</td>
-                        </tr>
-                        </button>
+                        <form action="/dashboards/{{this.id}}?_method=DELETE" method="POST">
+                            <tr>
+                                <td>{{category}}</td>
+                                <td>{{name}}</td>
+                                {{!-- <td>{{borrow_days}}</td> --}}
+                                <td>{{description}}</td>
+                                <td>{{createdAt}}</td>
+                                <td>User {{UserId}}</td>
+                                <td><button type="submit" class="btn btn-outline-dark">Return</button></td>
+                            </tr>
+                        </form>
+
                     </tbody>
                     {{/if}}
                     {{/each}}

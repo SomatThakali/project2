@@ -10,7 +10,15 @@ module.exports = (sequelize, DataTypes) => {
       street: { type: DataTypes.STRING, validate: { notEmpty: true } },
       city: { type: DataTypes.STRING, validate: { notEmpty: true } },
       state: { type: DataTypes.STRING, validate: { notEmpty: true } },
-      zipcode: { type: DataTypes.INTEGER, validate: { notEmpty: true } }
+      zipcode: { type: DataTypes.INTEGER, validate: { notEmpty: true } },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATEONLY
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATEONLY
+      }
     },
     {}
   );
