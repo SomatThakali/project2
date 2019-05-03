@@ -102,9 +102,9 @@
                             <tr class="firstrow">
                                 <th scope="col">Category</th>
                                 <th scope="col">Items</th>
-                                {{!-- <th scope="col">Borrow Days</th> --}}
+                                <th scope="col">Dyas Remainig</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Borrower</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -113,7 +113,7 @@
                             <tr>
                                 <td>{{category}}</td>
                                 <td>{{name}}</td>
-                                {{!-- <td>{{borrow_days}}</td> --}}
+                                <td>{{borrow_days}}</td>
                                 <td>{{description}}</td>
 
                             </tr>
@@ -144,9 +144,8 @@
                         <tr class="firstrow">
                             <th scope="col">Category</th>
                             <th scope="col">Items</th>
-                            {{!-- <th scope="col">Borrow Days</th> --}}
                             <th scope="col">Description</th>
-                            <th scope="col">Date Listed</th>
+                            <th scope="col">Days Remaining</th>
                             <th scope="col">Lender</th>
                             <th scope="col">Return</th>
                         </tr>
@@ -159,9 +158,8 @@
                             <tr>
                                 <td>{{category}}</td>
                                 <td>{{name}}</td>
-                                {{!-- <td>{{borrow_days}}</td> --}}
                                 <td>{{description}}</td>
-                                <td>{{createdAt}}</td>
+                                <td>{{borrow_days}}</td>
                                 <td>User {{UserId}}</td>
                                 <td><button type="submit" class="btn btn-outline-dark">Return</button></td>
                             </tr>
