@@ -23,6 +23,8 @@ module.exports = function(app) {
 
   app.get("/dashboards/:id", (req, res) => {
     let user = req.session.passport.user[0];
+    // res.redirect(`/dashboards/${user.id}`);
+
     const Sequelize = require("sequelize");
     const Op = Sequelize.Op;
     db.Item.findAll({
@@ -63,6 +65,7 @@ module.exports = function(app) {
       res.render("lending", { items: items, user: user });
     });
   });
+
   app.get("/borrowing/:id", function(req, res) {
     const Sequelize = require("sequelize");
     const Op = Sequelize.Op;
@@ -101,6 +104,22 @@ module.exports = function(app) {
   app.delete("/lending/:id", (req, res) => {
     let user = req.session.passport.user[0];
     res.redirect(`/lending/${user.id}`);
+    db.Item.destroy(
+      {
+        where: {
+          id: req.params.id
+        }
+      },
+
+      result => {
+        console.log(result);
+      }
+    );
+  });
+
+  app.delete("/dashboards/:id", (req, res) => {
+    let user = req.session.passport.user[0];
+    res.redirect(`/dashboards/${user.id}`);
     db.Item.destroy(
       {
         where: {

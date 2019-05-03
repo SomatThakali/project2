@@ -127,21 +127,25 @@
                             <th scope="col">Description</th>
                             <th scope="col">Date Listed</th>
                             <th scope="col">Lender</th>
+                            <th scope="col">Return</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {{#each itemsBrr}}
                         {{#if this.isBorrowed}}
-                        <tr>
-                            <td>{{category}}</td>
-                            <td>{{name}}</td>
-                            {{!-- <td>{{borrow_days}}</td> --}}
-                            <td>{{description}}</td>
-                            <td>{{createdAt}}</td>
-                            <td>User {{UserId}}</td>
-                        </tr>
-                        </button>
+                        <form action="/dashboards/{{this.id}}?_method=DELETE" method="POST">
+                            <tr>
+                                <td>{{category}}</td>
+                                <td>{{name}}</td>
+                                {{!-- <td>{{borrow_days}}</td> --}}
+                                <td>{{description}}</td>
+                                <td>{{createdAt}}</td>
+                                <td>User {{UserId}}</td>
+                                <td><button type="submit" class="btn btn-outline-dark">Return</button></td>
+                            </tr>
+                        </form>
+
                     </tbody>
                     {{/if}}
                     {{/each}}
