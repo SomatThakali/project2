@@ -29,24 +29,7 @@
 
 
 {{!-- Content --}}
-<style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
 
-  td,
-  th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-</style>
 
 <div class="container">
 
@@ -56,7 +39,10 @@
       <h4> Search for item(s) available in your neighborhood.</h4>
     </div>
   </div>
-  <input type="text" id="myInput" class="form-control mb-4" placeholder="Search for names.." title="Type in a name" />
+
+  <input type="text" id="myInput" class="form-control mb-4" placeholder="Search for items.." title="Type in a name" />
+
+
   <div class="row">
     <div class="col-md-12">
       <a class="btn btn-outline-dark mb-2" href="/dashboards/{{user.id}}" role="button">Go Back</a>
@@ -66,7 +52,7 @@
   <div class="row">
     <div class="col-md-12">
       <table id="myTable">
-        <tr>
+        <tr class="firstrow">
           <th>Category</th>
           <th>Item Name</th>
           <th>Description</th>
