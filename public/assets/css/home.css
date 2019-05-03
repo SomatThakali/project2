@@ -26,3 +26,49 @@ p {
   font-family: "Laila", serif;
   color: white !important;
 }
+
+.reg1 {
+  font-family: "Laila", serif;
+  color: white !important;
+  font-size: 4vw;
+  animation-name: reg1;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+@keyframes reg1 {
+  from {
+    color: #04bab5;
+  }
+  to {
+    color: #f2cc3d;
+  }
+}
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+@keyframes rubberBand {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scaleX(1.25) scaleY(0.75);
+  }
+  40% {
+    transform: scaleX(0.75) scaleY(1.25);
+  }
+  60% {
+    transform: scaleX(1.15) scaleY(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.rubberBand {
+  animation-name: rubberBand;
+}

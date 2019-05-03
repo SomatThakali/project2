@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const app = express();
 
-const PORT = process.env.PORT || 7894;
+const PORT = process.env.PORT || 8080;
 
 let db = require("./models");
 
