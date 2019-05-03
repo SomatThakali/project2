@@ -1,5 +1,5 @@
 const db = require("../models");
-const moment = require('moment');
+const moment = require("moment");
 
 const passport = require("passport");
 const { forwardAuthenticated } = require("../config/auth");
@@ -23,7 +23,6 @@ module.exports = function(app) {
           return next(err);
         }
         res.redirect(`dashboards/${user[0].dataValues.id}`);
-
       });
     })(req, res, next);
   });
