@@ -39,26 +39,42 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <h3>Name: {{user.firstName}} {{user.lastName}}</h3>
+    <div class="col-sm-2"></div>
+    <div id="user" class="col-md-6">
+
+        <div class="row">
+            <div class="col-md">
+                <h3>Name:</h3>
+                <h4>{{user.firstName}} {{user.lastName}}</h4>
+            </div>
         </div>
-        <div class="col-sm">
-            <h3>Email:{{user.email}} </h3>
+        <div class="row">
+            <div class="col-md">
+                <h3>Email:</h3>
+                <h4>{{user.email}} </h4>
+            </div>
         </div>
+
+
+
+        <div class="row">
+            <div class="col-sm">
+                <h5>Address: {{user.street}} {{user.city}} {{user.state}} {{user.zipcode}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <h5>Member Since:{{user.createdAt}} </h5>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <h5>Address: {{user.street}} {{user.city}} {{user.state}} {{user.zipcode}}</h5>
-        </div>
-        <div class="col-sm">
-            <h5>Member Since:{{user.createdAt}} </h5>
-        </div>
-    </div>
-</div>
+<hr>
+<hr>
 
 <br />
 
@@ -67,7 +83,7 @@
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-8">
-                    <h2>LENT</h2>
+                    <h2>HELD ITEMS</h2>
                 </div>
                 <div class="col-md-4">
                     <a class="btn btn-dark" href="/lending/{{user.id}}" role="button">LEND STUFF</a>
@@ -109,7 +125,7 @@
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-8">
-                    <h2>BORROWED</h2>
+                    <h2>BORROWED ITEMS</h2>
                 </div>
                 <div class="col-md-4">
                     <a class="btn btn-dark" href="/borrowing/{{user.id}}" role="button">GET STUFF</a>
