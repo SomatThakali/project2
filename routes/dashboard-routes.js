@@ -132,4 +132,12 @@ module.exports = function(app) {
       }
     );
   });
+
+  // let uploading = multer({
+  //   dest: __dirname + "../public/assets/images"
+  // });
+
+  // app.post("/upload", uploading, function(req, res) {
+  //   let image = req.file;
+  // });
 };
