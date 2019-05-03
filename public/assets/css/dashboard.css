@@ -28,6 +28,7 @@ h2 {
   color: #f2cc3d;
   font-size: xx-large;
   -webkit-text-stroke: 1px black;
+  float: left;
 }
 .btn {
   font-family: "Amatic SC", cursive;
@@ -42,5 +43,12 @@ h2 {
 }
 .firstrow {
   background-color: #5d5c5c;
+  opacity: 0.8;
+}
+
+#user {
+  color: white;
+  text-align: left;
+  background-color: #04bab5;
   opacity: 0.8;
 }

@@ -70,3 +70,9 @@ tr:nth-child(even) {
   background-color: #5d5c5c !important;
   opacity: 0.8;
 }
+#myInput {
+  opacity: 0.9;
+}
+#myInput:active {
+  border: none;
+}
