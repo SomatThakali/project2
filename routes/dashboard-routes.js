@@ -45,7 +45,8 @@ module.exports = function(app) {
         res.render("dashboards", {
           itemsBrr: itemsBrr,
           items: items,
-          user: user
+          user: user,
+          title: "dashboards"
         });
       });
     });
@@ -62,7 +63,7 @@ module.exports = function(app) {
       include: [db.User]
     }).then(function(items) {
       console.log(items);
-      res.render("lending", { items: items, user: user });
+      res.render("lending", { items: items, user: user, title: "lending" });
     });
   });
 
@@ -79,7 +80,11 @@ module.exports = function(app) {
         }
       }
     }).then(function(items) {
-      return res.render("borrowing", { items: items, user: user });
+      return res.render("borrowing", {
+        items: items,
+        user: user,
+        title: "borrowing"
+      });
     });
   });
 
