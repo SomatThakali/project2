@@ -19,7 +19,7 @@ h2 {
   height: 280px;
   width: 200px;
   background-color: #8d8c8c;
-  opacity: 0.8;
+  opacity: 0.9;
   border-radius: 10px;
   box-shadow: -1rem 0 3rem #5d5c5cd0;
   margin-left: -50px;
@@ -63,6 +63,9 @@ p {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-play-state: running;
+}
+.fab {
+  font-size: larger;
 }
 
 @keyframes flash {

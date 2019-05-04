@@ -49,6 +49,16 @@ h2 {
 #user {
   color: white;
   text-align: left;
-  background-color: #04bab5;
+  background-color: #5d5c5c;
   opacity: 0.8;
+  padding: 10px;
+  border-left-color: #f2cc3d;
+  border-left-style: solid;
+  border-left-width: 10px;
+  border-top-color: #04bab5;
+  border-top-style: solid;
+  border-top-width: 8px;
+}
+h3 {
+  font-family: "Lato", sans-serif;
 }
