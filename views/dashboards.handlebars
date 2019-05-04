@@ -44,56 +44,112 @@
     <input type="submit" value="Upload Image">
 </form>
 
-<div class="container">
+<div class="row">
     <div class="col-sm-2"></div>
-    <div id="user" class="col-md-6">
+    <div class="col-md-5">
+        <div id="user">
 
-        <div class="row">
-            <div>
-                <h3>Name:</h3>
-                <h4>{{user.firstName}} {{user.lastName}}</h4>
+            <div class="row">
+
+                <h4 class="col-sm-3">NAME:</h4>
+                <h3 class="col-lg-9">{{user.firstName}} {{user.lastName}}</h3>
+
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <h3>Email:</h3>
-                <h4>{{user.email}} </h4>
+            <div class="row">
+
+                <h4 class="col-sm-3">EMAIL:</h4>
+                <h3 class="col-lg-9">{{user.email}} </h3>
+
             </div>
-        </div>
 
 
 
-        <div class="row">
-            <div class="col-sm">
-                <h5>Address: {{user.street}} {{user.city}} {{user.state}} {{user.zipcode}}</h5>
+            <div class="row">
+                <h4 class="col-sm-3">ADDRESS: </h4>
+                <h3 class="col-lg-9"> {{user.street}} {{user.city}} {{user.state}} {{user.zipcode}} </h3>
+
+
             </div>
+
+            <div class="row">
+                <h4 class="col-sm-3">MEMBER SINCE: </h4>
+                <h3 class="col-lg-9"> {{user.createdAt}} </h3>
+
+
+            </div>
+
+
+
+
+
         </div>
 
-        <div class="col-sm">
-            <h5>Member Since: {{user.createdAt}} </h5>
-        </div>
 
-
+        <div class="col-md-6"></div>
 
     </div>
-</div>
+    <hr>
 
-<hr>
-<hr>
+    <hr>
 
-<br />
+    <br />
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-8">
-                    <h2>HELD ITEMS</h2>
+    <div class="container">
+        <hr>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <h2>HELD ITEMS</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-dark" href="/lending/{{user.id}}" role="button">LEND STUFF</a>
+                    </div>
+
+
+                    <div class="col-lg-12">
+                        <table class="table table-sm table-hover mt-4">
+
+                            <thead>
+                                <tr class="firstrow">
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Items</th>
+                                    <th scope="col">Days Remainig</th>
+                                    <th scope="col">Description</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {{#each items}}
+                                <tr>
+                                    <td>{{category}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{borrow_days}}</td>
+                                    <td>{{description}}</td>
+
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-                <div class="col-md-4">
-                    <a class="btn btn-dark" href="/lending/{{user.id}}" role="button">LEND STUFF</a>
-                </div>
 
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>BORROWED ITEMS</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-dark" href="/borrowing/{{user.id}}" role="button">GET STUFF</a>
+                    </div>
+                </div>
 
                 <div class="col-lg-12">
                     <table class="table table-sm table-hover mt-4">
@@ -102,76 +158,34 @@
                             <tr class="firstrow">
                                 <th scope="col">Category</th>
                                 <th scope="col">Items</th>
-                                <th scope="col">Days Remainig</th>
                                 <th scope="col">Description</th>
-
+                                <th scope="col">Days Remaining</th>
+                                <th scope="col">Lender</th>
+                                <th scope="col">Return</th>
                             </tr>
                         </thead>
+
                         <tbody>
-
-                            {{#each items}}
-                            <tr>
-                                <td>{{category}}</td>
-                                <td>{{name}}</td>
-                                <td>{{borrow_days}}</td>
-                                <td>{{description}}</td>
-
-                            </tr>
-                            {{/each}}
+                            {{#each itemsBrr}}
+                            {{#if this.isBorrowed}}
+                            <form action="/dashboards/{{this.id}}?_method=DELETE" method="POST">
+                                <tr>
+                                    <td>{{category}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{description}}</td>
+                                    <td>{{borrow_days}}</td>
+                                    <td>User {{UserId}}</td>
+                                    <td><button type="submit" class="btn btn-outline-dark">Return</button></td>
+                                </tr>
+                            </form>
 
                         </tbody>
+                        {{/if}}
+                        {{/each}}
                     </table>
+
                 </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-8">
-                    <h2>BORROWED ITEMS</h2>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-dark" href="/borrowing/{{user.id}}" role="button">GET STUFF</a>
-                </div>
-            </div>
-
-            <div class="col-lg-12">
-                <table class="table table-sm table-hover mt-4">
-
-                    <thead>
-                        <tr class="firstrow">
-                            <th scope="col">Category</th>
-                            <th scope="col">Items</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Days Remaining</th>
-                            <th scope="col">Lender</th>
-                            <th scope="col">Return</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {{#each itemsBrr}}
-                        {{#if this.isBorrowed}}
-                        <form action="/dashboards/{{this.id}}?_method=DELETE" method="POST">
-                            <tr>
-                                <td>{{category}}</td>
-                                <td>{{name}}</td>
-                                <td>{{description}}</td>
-                                <td>{{borrow_days}}</td>
-                                <td>User {{UserId}}</td>
-                                <td><button type="submit" class="btn btn-outline-dark">Return</button></td>
-                            </tr>
-                        </form>
-
-                    </tbody>
-                    {{/if}}
-                    {{/each}}
-                </table>
-
             </div>
         </div>
     </div>
-</div>
 </div>
